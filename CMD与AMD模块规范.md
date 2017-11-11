@@ -1,5 +1,5 @@
 # CMD与AMD模块化规范
----
+
 ## 一、CMD
 - Common Module Definition
 - 中文名：通用模块定义
@@ -66,7 +66,7 @@ seajs.use(['mod.js','xxx.js','xxx.js',...],function (a,b,...) {
 注：　html引用js　：use</br>
 　　　js　引用js　: requier
 
-
+---
 ## 二、AMD
 - Asynchronous Module Definition
 - 中文名：异步模块定义
