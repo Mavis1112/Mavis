@@ -1,10 +1,10 @@
-#CMD与AMD模块化规范
+# CMD与AMD模块化规范
 ---
-##一、CMD
+## 一、CMD
 - Common Module Definition
 - 中文名：通用模块定义
 - 代表：seaJS
-###1.定义
+### 1.定义
 ```java
 define(factory);
 defint(function(require,exports,module){
@@ -67,7 +67,7 @@ seajs.use(['mod.js','xxx.js','xxx.js',...],function (a,b,...) {
 　　　js　引用js　: requier
 
 
-##二、AMD
+## 二、AMD
 - Asynchronous Module Definition
 - 中文名：异步模块定义
 - 代表：requireJS
@@ -108,7 +108,7 @@ define(function (require, exports, module) {
   exports.action = function () {};
 });
 ```
-##三、AMD与CMD区别
+## 三、AMD与CMD区别
 AMD和CMD最大的区别是对依赖模块的执行时机处理不同，注意不是加载的时机或者方式不同.
 1. **AMD**推崇**依赖前置**，在定义模块的时候就要声明其依赖的模块(**提前执行**)
 2. **CMD**推崇**就近依赖**，只有在用到某个模块的时候再去require（**延迟执行**）
