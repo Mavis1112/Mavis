@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+
+    <style media="screen">
+      body{
+        height: 1000px;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+      }
+      .box1 {
+        background-color: blue;
+        left:100px;
+        top:20px;
+      }
+      .box2 {
+        background-color: #ccc;
+      }
+      .box3 {
+        background-color: yellow;
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload=function (){
+        let abox=document.getElementsByClassName('box');
+        Array.from(abox).forEach(box=>{
+          drag(box);
+        })
+        //点击
+        function drag(obj) {
+          obj.addEventListener('touchstart',function (ev) {
+            ev.preventDefault();
+            let id=ev.targetTouches[0].identifier;
+            let disX=ev.targetTouches[0].pageX-obj.offsetLeft;
+            let disY=ev.targetTouches[0].pageY-obj.offsetTop;
+
+            //移动
+            function fnMove(ev) {
+             ev.preventDefault();
+              obj.style.left=ev.targetTouches[0].pageX-disX+'px';
+              obj.style.top=ev.targetTouches[0].pageY-disY+'px';
+            }
+            function fnEnd(ev) {
+              let found=false;
+              Array.from(ev.changedTouches).forEach(touch=>{
+                if(touch.identifier==id){
+                  found=true;
+                }
+              });
+              if(found){
+                obj.removeEventListener('touchmove',fnMove,false);
+                obj.removeEventListener('touchend',fnEnd,false);
+              }
+            }
+            obj.addEventListener('touchmove',fnMove,false);
+            obj.addEventListener('touchend',fnEnd,false);
+          },false);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="box1 box"></div>
+    <div class="box2 box"></div>
+    <div class="box3 box"></div>
+  </body>
+</html>
